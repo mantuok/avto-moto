@@ -5,7 +5,9 @@ import Navigation from '../navigation/navigation';
 const Footer = () => {
   return (
     <footer className="page__footer footer">
-      <Navigation navigationType={NavigationType.FOOTER} />
+      <div className="footer__container">
+        <Navigation navigationType={NavigationType.FOOTER} />
+      </div>
     </footer>
   )
 }

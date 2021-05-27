@@ -1,1 +1,8 @@
-@import './utils/fonts';
+@import './utils/fonts.scss';
+@import './utils/colors.scss';
+@import './utils/mixins.scss';
+@import './utils/global.scss';
+@import './utils/visually-hidden.scss';
+@import './blocks/page.scss';
+@import './blocks/header.scss';
+@import './blocks/footer.scss';

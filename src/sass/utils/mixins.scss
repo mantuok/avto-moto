@@ -1,0 +1,16 @@
+@mixin container {
+  width: 1169px;
+  margin: auto;
+}
+
+@mixin reset-style-list {
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+@mixin reset-link {
+  text-decoration: none;
+  color: inherit;
+}
