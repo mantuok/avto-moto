@@ -1,7 +1,7 @@
 import {nanoid} from 'nanoid';
 
 export const NavigationItem = {
-  Header: {
+  header: {
     Auto: {
       ID: nanoid(),
       NAME: `Автомобили`,
@@ -23,7 +23,7 @@ export const NavigationItem = {
       URL: `#`
     }
   },
-  Footer: {
+  footer: {
     Corporate: {
       ID: nanoid(),
       NAME: `Корпоративным клиентам`,
