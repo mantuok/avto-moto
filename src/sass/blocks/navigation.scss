@@ -1,0 +1,21 @@
+.navigation__list {
+  @include reset-list-style;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navigation__element:not(:last-child) {
+  margin-right: 56px;
+}
+
+.navigation__link {
+  @include reset-link-style;
+  
+  font-weight: 600;
+
+  &:hover {
+    color: var(--contrast);
+  }
+}
