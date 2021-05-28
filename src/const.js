@@ -65,4 +65,38 @@ export const NavigationItem = {
 export const NavigationType = {
   HEADER: `header`,
   FOOTER: `footer`
-}
+};
+
+export const SliderImage = {
+  image1: {
+    ID: nanoid(),
+    ALT: `Внешний вид автомобиля`,
+    FULL: `./img/slider-exterior.jpg`,
+    THUMBNAIL: `./img/thumbnail-exterior.jpg`
+  },
+  image2: {
+    ID: nanoid(),
+    ALT: `Салон автомобиля`,
+    FULL: `./img/slider-interior.jpg`,
+    THUMBNAIL: `./img/thumbnail-interior.jpg`
+  },
+  image3: {
+    ID: nanoid(),
+    ALT: `Приборная панель автомобиля`,
+    FULL: `./img/slider-speed.jpg`,
+    THUMBNAIL: `./img/thumbnail-speed.jpg`
+  }
+};
+
+export const ImageType = {
+  FULL: {
+    name: `FULL`,
+    width: `600`,
+    height: `375`
+  },
+  THUMBNAIL: {
+    name: `THUMBNAIL`,
+    width: `128`,
+    height: `80`
+  }
+};

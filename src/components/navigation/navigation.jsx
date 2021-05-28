@@ -6,7 +6,6 @@ import {
   NavigationItem
 } from '../../const';
 
-
 const HeaderNavigation = (props) => {
   const {navigationType} = props;
 
@@ -14,9 +13,9 @@ const HeaderNavigation = (props) => {
     {"header__navigation": navigationType === NavigationType.HEADER},
     {"footer__navigation": navigationType === NavigationType.FOOTER},
     `navigation`
-  )
+  );
 
-  const navigationItemsList = Object.values(NavigationItem[navigationType])
+  const navigationItemsList = Object.values(NavigationItem[navigationType]);
 
   const renderNavigationItems = () => {
     return navigationItemsList.map((item) => {
@@ -26,7 +25,7 @@ const HeaderNavigation = (props) => {
         url={item.URL}
         />
     })
-  }
+  };
 
   return (
     <nav className={navigationClass}>
