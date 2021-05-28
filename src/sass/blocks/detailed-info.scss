@@ -1,0 +1,25 @@
+.detailed-info__tabs {
+  margin-bottom: 10px;
+}
+
+.detailed-info__tab {
+  padding-top: 16px;
+  padding-right: 20px;
+  padding-bottom: 16px;
+  padding-left: 20px;
+
+  width: 195px;
+
+  color: var(--font-basic);
+  font-size: 20px;
+
+  background-color: var(--basic);
+  
+  border: 1px solid var(--extra-light-decorative);
+
+  &--active {
+    color: var(--basic);
+    background-color: var(--contrast);
+    border-color: var(--contrast);
+  }
+}
