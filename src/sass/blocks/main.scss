@@ -1,0 +1,20 @@
+.main {
+  @include container;
+
+  display: grid;
+  grid-template-areas: 
+    "slider short-info"
+    "detailed-info detailed-info";
+}
+
+.main__slider {
+  grid-area: slider;
+}
+
+.main__short-info {
+  grid-area: short-info;
+}
+
+.main__detailed-info {
+  grid-area: detailed-info;
+}

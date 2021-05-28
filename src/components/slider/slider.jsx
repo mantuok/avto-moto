@@ -22,10 +22,17 @@ const Slider = () => {
   return (
     <section className="main__slider slider">
       <div className="slider__slides">
-        {renderImageList(ImageType.FULL.name)}
+        {/* {renderImageList(ImageType.FULL.name)} */}
+        <ImageItem 
+          key={SliderImage.image1.ID} 
+          type={ImageType.FULL.name}
+          image={SliderImage.image1}
+        /> 
       </div>
       <div className="slider__thumbnails">
+        <button className="slider__previous">Назад</button>
         {renderImageList(ImageType.THUMBNAIL.name)}
+        <button className="slider__next">Вперед</button>
       </div>
     </section>
   )

@@ -100,3 +100,41 @@ export const ImageType = {
     height: `80`
   }
 };
+
+export const FeatureItem = {
+  transmission: {
+    ID: nanoid(),
+    NAME: `Трансмиссия`,
+    VALUE: `Роботизированная`
+  },
+  power: {
+    ID: nanoid(),
+    NAME: `Мощность двигателя, л.с.`,
+    VALUE: `249`
+  },
+  type: {
+    ID: nanoid(),
+    NAME: `Тип двигателя`,
+    VALUE: `Бензиновый`
+  },
+  wheels: {
+    ID: nanoid(),
+    NAME: `Привод`,
+    VALUE: `Полный`
+  },
+  size: {
+    ID: nanoid(),
+    NAME: `Объем двигателя, л`,
+    VALUE: `2.4`
+  },
+  torque: {
+    ID: nanoid(),
+    NAME: `Макс. крутящий момент`,
+    VALUE: `370/4500`
+  },
+  cylinders: {
+    ID: nanoid(),
+    NAME: `Количество цилиндров`,
+    VALUE: `4`
+  }
+};
