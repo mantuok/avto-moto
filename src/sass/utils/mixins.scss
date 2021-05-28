@@ -14,3 +14,33 @@
   text-decoration: none;
   color: inherit;
 }
+
+@mixin button {
+  padding-top: 16px;
+  padding-right: 20px;
+  padding-bottom: 16px;
+  padding-left: 20px;
+
+  font-size: 14px;
+  color: var(--contrast);
+  letter-spacing: 0.12em;
+
+  background-color: var(--basic);
+
+  border: 1px solid var(--contrast);
+}
+
+@mixin button-contrast {
+  padding-top: 16px;
+  padding-right: 20px;
+  padding-bottom: 16px;
+  padding-left: 20px;
+
+  font-size: 14px;
+  color: var(--basic);
+  letter-spacing: 0.12em;
+
+  background-color: var(--contrast);
+
+  border: none;
+}

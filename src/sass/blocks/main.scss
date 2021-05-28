@@ -2,9 +2,14 @@
   @include container;
 
   display: grid;
+  grid-template-columns: max-content 1fr;
   grid-template-areas: 
     "slider short-info"
     "detailed-info detailed-info";
+  row-gap: 90px;
+  column-gap: 57px;
+
+  margin-bottom: 140px;
 }
 
 .main__slider {
