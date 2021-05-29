@@ -51,10 +51,18 @@
 
   &--next-active {
     background-image: url("../../img/icon-arrow-right-active.svg");
+
+    &:hover {
+      border-color: var(--contrast);
+    }
   }
 
   &--previous-active {
     background-image: url("../../img/icon-arrow-left-active.svg");
+
+    &:hover {
+      border-color: var(--contrast);
+    }
   }
 
   &--next-inactive {

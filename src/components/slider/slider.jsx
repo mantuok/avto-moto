@@ -75,18 +75,14 @@ const Slider = () => {
     });
   };
 
-  const handleNextButtonClick = (buttonType) => {
-    if (!activeSlideImage.isLastImage) {
+  const handleButtonClick = (buttonType) => {
+    if (
+        (buttonType === ButtonType.NEXT && !activeSlideImage.isLastImage) || 
+        (buttonType === ButtonType.PREVIOUS && !activeSlideImage.isFirstImage)
+      ) {
       const targetImage = getTargetImage(buttonType);
       changeActiveSlide(targetImage);
-    }
-  }
-
-  const handlePreviousButtonClick = (buttonType) => {
-    if (!activeSlideImage.isFirstImage) {
-      const targetImage = getTargetImage(buttonType);
-      changeActiveSlide(targetImage, buttonType);
-    }
+    } 
   }
 
   return (
@@ -97,7 +93,7 @@ const Slider = () => {
       <div className="slider__thumbnails-wrapper">
         <button 
           className={previousButtonClass}
-          onClick={() => handlePreviousButtonClick(ButtonType.PREVIOUS)} 
+          onClick={() => handleButtonClick(ButtonType.PREVIOUS)} 
         >
             <span className="visually-hidden">Назад</span>
         </button>
@@ -106,7 +102,7 @@ const Slider = () => {
         </div>
         <button 
           className={nextButtonClass}
-          onClick={() => handleNextButtonClick(ButtonType.NEXT)}
+          onClick={() => handleButtonClick(ButtonType.NEXT)}
         >
           <span className="visually-hidden">Вперед</span>
         </button>
