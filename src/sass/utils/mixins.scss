@@ -21,6 +21,7 @@
   padding-bottom: 16px;
   padding-left: 20px;
 
+  font-style: inherit;
   font-size: 14px;
   color: var(--contrast);
   letter-spacing: 0.12em;
@@ -28,6 +29,14 @@
   background-color: var(--basic);
 
   border: 1px solid var(--contrast);
+
+  &:hover {
+    color: var(--basic);
+
+    background-color: var(--contrast);
+  }
+
+
 }
 
 @mixin button-contrast {
@@ -36,11 +45,16 @@
   padding-bottom: 16px;
   padding-left: 20px;
 
+  font-style: inherit;
   font-size: 14px;
   color: var(--basic);
   letter-spacing: 0.12em;
 
   background-color: var(--contrast);
 
-  border: none;
+  border: 1px solid var(--contrast);
+
+  &:hover {
+    background-color: var(--dark-contrast);
+  }
 }

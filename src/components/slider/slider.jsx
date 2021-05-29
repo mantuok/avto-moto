@@ -29,10 +29,12 @@ const Slider = () => {
           image={SliderImage.image1}
         /> 
       </div>
-      <div className="slider__thumbnails">
-        <button className="slider__previous">Назад</button>
-        {renderImageList(ImageType.THUMBNAIL.name)}
-        <button className="slider__next">Вперед</button>
+      <div className="slider__thumbnails-wrapper">
+        <button className="slider__button slider__button--previous-active"><span className="visually-hidden">Назад</span></button>
+        <div className="slider__thumbnails">
+          {renderImageList(ImageType.THUMBNAIL.name)}
+        </div>
+        <button className="slider__button slider__button--next-active"><span className="visually-hidden">Вперед</span></button>
       </div>
     </section>
   )
