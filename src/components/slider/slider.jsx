@@ -1,21 +1,31 @@
 import React, {useState} from 'react';
+import classnames from 'classnames';
 import {
   sliderImages,
-  ImageType
+  ImageType,
+  ButtonType
 } from '../../const';
 import ImageItem from '../image-item/image-item';
 
 const Slider = () => {
   const [activeSlideImage, setActiveSlideImage] = useState({
-    id: sliderImages[0].ID
-  })
+    id: sliderImages[0].ID,
+    index: 0,
+    isFirstImage: true,
+    isLastImage: false
+  });
 
-  const changeActiveSlide = (selectedImage) => {
-    setActiveSlideImage({
-      ...activeSlideImage,
-      id: selectedImage
-    })
-  }
+  const previousButtonClass = classnames(
+    `slider__button`,
+    {"slider__button--previous-active": !activeSlideImage.isFirstImage},
+    {"slider__button--previous-inactive": activeSlideImage.isFirstImage}
+  );
+
+  const nextButtonClass = classnames(
+    `slider__button`,
+    {"slider__button--next-active": !activeSlideImage.isLastImage},
+    {"slider__button--next-inactive": activeSlideImage.isLastImage}
+    );
 
   const renderThumbnailsList = () => {
     return sliderImages.map((image) => {
@@ -24,16 +34,59 @@ const Slider = () => {
         type={ImageType.THUMBNAIL.name}
         image={image}
       /> 
-    })
-  }
+    });
+  };
 
   const renderSlideImage = () => {
-    const selectedSlideImage = sliderImages.find((image) => image.ID === activeSlideImage.id);
+    const selectedSlideImage = sliderImages.find((image) => {
+      return image.ID === activeSlideImage.id
+    });
     return <ImageItem 
       key={selectedSlideImage.ID} 
       type={ImageType.FULL.name}
       image={selectedSlideImage}
     /> 
+  };
+
+  const getTargetImage = (buttonType) => {
+    if (buttonType === ButtonType.NEXT) {
+      return sliderImages[activeSlideImage.index + 1]
+    } else if (buttonType === ButtonType.PREVIOUS) {
+      return sliderImages[activeSlideImage.index - 1]
+    }
+  };
+
+  const isExtremeImage = (buttonType, imageIndex) => {
+    if (buttonType === ButtonType.NEXT) {
+      return (imageIndex === sliderImages.length - 1)
+    } else if (buttonType === ButtonType.PREVIOUS) {
+      return (imageIndex === 0)
+    }
+  }
+
+  const changeActiveSlide = (targetImage) => {
+    const targetImageIndex = sliderImages.indexOf(targetImage);
+    setActiveSlideImage({
+      ...activeSlideImage,
+      id: targetImage.ID,
+      index: targetImageIndex,
+      isFirstImage: isExtremeImage(ButtonType.PREVIOUS, targetImageIndex),
+      isLastImage: isExtremeImage(ButtonType.NEXT, targetImageIndex)
+    });
+  };
+
+  const handleNextButtonClick = (buttonType) => {
+    if (!activeSlideImage.isLastImage) {
+      const targetImage = getTargetImage(buttonType);
+      changeActiveSlide(targetImage);
+    }
+  }
+
+  const handlePreviousButtonClick = (buttonType) => {
+    if (!activeSlideImage.isFirstImage) {
+      const targetImage = getTargetImage(buttonType);
+      changeActiveSlide(targetImage, buttonType);
+    }
   }
 
   return (
@@ -42,11 +95,21 @@ const Slider = () => {
         {renderSlideImage()}
       </div>
       <div className="slider__thumbnails-wrapper">
-        <button className="slider__button slider__button--previous-active"><span className="visually-hidden">Назад</span></button>
+        <button 
+          className={previousButtonClass}
+          onClick={() => handlePreviousButtonClick(ButtonType.PREVIOUS)} 
+        >
+            <span className="visually-hidden">Назад</span>
+        </button>
         <div className="slider__thumbnails">
           {renderThumbnailsList()}
         </div>
-        <button className="slider__button slider__button--next-active"><span className="visually-hidden">Вперед</span></button>
+        <button 
+          className={nextButtonClass}
+          onClick={() => handleNextButtonClick(ButtonType.NEXT)}
+        >
+          <span className="visually-hidden">Вперед</span>
+        </button>
       </div>
     </section>
   )

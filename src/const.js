@@ -138,3 +138,8 @@ export const FeatureItem = {
     VALUE: `4`
   }
 };
+
+export const ButtonType = {
+  PREVIOUS: `PREVIOUS`,
+  NEXT: `NEXT`
+}
