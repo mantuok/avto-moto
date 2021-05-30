@@ -1,6 +1,7 @@
 import React from 'react';
 import {RecommendRating} from '../../const';
 import {getHumanDateFormat} from '../../utils/day';
+import {nanoid} from 'nanoid';
 
 const Review = ({review}) => {
   const {author, date, advantages, disadvantages, comment, rating} = review;
@@ -8,10 +9,10 @@ const Review = ({review}) => {
   const renderStarRating = () => {
     let starsList = [];
     for (let i = 0; i < rating; i++) {
-      starsList.push(<span className="rating__star rating__star--active"></span>)
+      starsList.push(<span key={nanoid()} className="rating__star rating__star--active"></span>)
     }
     for (let i = 0; i < 5 - rating; i++) {
-      starsList.push(<span className="rating__star rating__star--inactive"></span>)
+      starsList.push(<span key={nanoid()} className="rating__star rating__star--inactive"></span>)
     }
     return starsList;
   }
@@ -25,13 +26,13 @@ const Review = ({review}) => {
   return (
     <li className="reviews__item review">
       <h3 className="review__author">{author}</h3>
-      <div className="review__text text">
-        <h4 className="text__heading text__heading--advantages">Достоинства</h4>
-        <p className="text__advantages">{advantages}</p>
-        <h4 className="text__heading text__heading--advantages">Недостатки</h4>
-        <p className="text__advantages">{disadvantages}</p>
-        <h4 className="text__heading text__heading--advantages">Комментарий</h4>
-        <p className="text__advantages">{comment}</p>
+      <div className="review__text review-text">
+        <h4 className="review-text__heading review-text__heading--advantages">Достоинства</h4>
+        <p className="review-text__text review-text__text--advantages">{advantages}</p>
+        <h4 className="review-text__heading review-text__heading--disadvantages">Недостатки</h4>
+        <p className="review-text__text review-text__text--disadvantages">{disadvantages}</p>
+        <h4 className="review-text__heading review-text__heading--comment">Комментарий</h4>
+        <p className="review-text__text review-text__text--comment">{comment}</p>
       </div>
       <div className="review__rating rating">
         {renderStarRating()}

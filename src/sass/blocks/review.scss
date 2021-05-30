@@ -1,0 +1,40 @@
+.review {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-template-areas: 
+  "author author"
+  "text text"
+  "rating recommends"
+  "date reply";
+}
+
+.review__author {
+  grid-area: author;
+
+  margin: 0;
+  margin-bottom: 12px;
+
+  font-size: 20px;
+  font-weight: 600;
+
+}
+
+.review__text {
+  grid-area: text;
+}
+
+.review__rating {
+  grid-area: rating;
+}
+
+.review__recommends {
+  grid-area: recommends;
+}
+
+.review__date {
+  grid-area: date;
+}
+
+.review__reply {
+  grid-area: reply;
+}
