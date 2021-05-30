@@ -1,0 +1,23 @@
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating__star {
+  width: 17px;
+  height: 17px;
+
+  background-repeat: no-repeat;
+
+  &:not(:last-child) {
+    margin-right: 5px;
+  }
+
+  &--active {
+    background-image: url("../../img/icon-star-active.svg");;
+  }
+
+  &--inactive {
+    background-image: url("../../img/icon-star-inactive.svg");;
+  }
+}

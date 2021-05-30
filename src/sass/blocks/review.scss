@@ -6,6 +6,11 @@
   "text text"
   "rating recommends"
   "date reply";
+  column-gap: 20px;
+  
+  margin-bottom: 22px;
+
+  border-bottom: 0.5px solid var(--extra-light-decorative);
 }
 
 .review__author {
@@ -29,12 +34,33 @@
 
 .review__recommends {
   grid-area: recommends;
+
+  font-size: 15px;
+  color: var(--contrast);
 }
 
 .review__date {
   grid-area: date;
+  
+  font-size: 14px;
+  color: var(--extra-light-decorative)
 }
 
 .review__reply {
   grid-area: reply;
+  justify-self: start;
+
+  padding: 0;
+
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--contrast);
+
+  background-color: transparent;
+
+  border: none;
+
+  &:hover {
+    opacity: 0.5;
+  }
 }

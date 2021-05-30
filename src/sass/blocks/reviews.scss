@@ -1,3 +1,15 @@
+.reviews {
+  position: relative;
+}
+
 .reviews__list {
   @include reset-list-style;
+}
+
+.reviews__add-review {
+  @include button;
+  
+  position: absolute;
+  top: 0;
+  right: 0;
 }
