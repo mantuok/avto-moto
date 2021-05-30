@@ -1,5 +1,6 @@
 import React from 'react';
 import FeaturesTab from '../features-tab/features-tab';
+import ReviewsTab from '../reviews-tab/reviews-tab';
 
 const DetailedInfo = () => {
   return (
@@ -9,8 +10,8 @@ const DetailedInfo = () => {
         <button className="detailed-info__tab">Отзывы</button>
         <button className="detailed-info__tab">Контакты</button>
       </div>
-      <FeaturesTab />
-      
+      {/* <FeaturesTab /> */}
+      <ReviewsTab />
     </section>
   )
 }

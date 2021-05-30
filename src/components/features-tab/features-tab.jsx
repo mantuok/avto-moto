@@ -19,9 +19,11 @@ const FeaturesTab = () => {
   }
 
   return (
-    <ul className="detailed-info__features detailed-features">
-    {renderFeaturesList()}
-  </ul>
+    <section className="detailed-info__features detailed-features">
+      <ul className="detailed-features__list">
+        {renderFeaturesList()}
+      </ul>
+    </section>
   )
 };
 

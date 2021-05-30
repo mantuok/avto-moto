@@ -17,8 +17,8 @@ const ShortInfo = () => {
         <span className="price price--new">{price}</span>
         <span className="price price--old">{oldPrice}</span>
       </div>
-      <button className="short-info__request">оставить заявку</button>
-      <button className="short-info__loan">в кредит от 11 000 ₽</button>
+      <button className="short-info__request">ОСТАВИТЬ ЗАЯВКУ</button>
+      <button className="short-info__loan">В КРЕДИТЬ ОТ 11 000 ₽</button>
     </section>
   )
 }

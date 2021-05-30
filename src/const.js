@@ -122,3 +122,5 @@ export const ButtonType = {
   PREVIOUS: `PREVIOUS`,
   NEXT: `NEXT`
 }
+
+export const RecommendRating = 3;
