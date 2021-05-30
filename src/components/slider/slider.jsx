@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import classnames from 'classnames';
+import {sliderImages} from '../../mocks/slider-images';
 import {
-  sliderImages,
   ImageType,
   ButtonType
 } from '../../const';
