@@ -18,9 +18,17 @@
   
   border: 1px solid var(--extra-light-decorative);
 
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--contrast)
+  }
+
   &--active {
     color: var(--basic);
     background-color: var(--contrast);
     border-color: var(--contrast);
+
+    cursor: auto;
   }
 }

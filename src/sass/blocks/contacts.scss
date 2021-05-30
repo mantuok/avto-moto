@@ -1,0 +1,35 @@
+.contacts {
+  display: flex;
+}
+
+.contacts__description {
+  display: flex;
+  flex-direction: column;
+
+  margin-right: 74px;
+}
+
+.contacts__heading {
+  margin: 0;
+  margin-bottom: 10px;
+
+  font-weight: 700;
+}
+
+.contacts__contact {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+
+  &--tel {
+    @include reset-link-style;
+  }
+
+  &--email {
+    @include reset-link-style;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 20px;;
+  }
+}
