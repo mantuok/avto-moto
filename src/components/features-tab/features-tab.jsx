@@ -1,16 +1,19 @@
 import React from 'react';
 import Feature from '../feature/feature';
 import {FeatureItem} from '../../const';
+import {cars} from '../../mocks/cars';
 
 const FeaturesTab = () => {
   const featuresList = Object.values(FeatureItem);
+
+  const car = cars[0];
 
   const renderFeaturesList = () => {
     return featuresList.map((item) => {
       return <Feature
         key={item.ID}
         name={item.NAME}
-        value={item.VALUE}
+        value={car[item.NAME_EN]}
       />
     })
   }

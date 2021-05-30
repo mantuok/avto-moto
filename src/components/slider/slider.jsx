@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import classnames from 'classnames';
-import {sliderImages} from '../../mocks/slider-images';
+import {cars} from '../../mocks/cars';
 import {
   ImageType,
   ButtonType
@@ -8,8 +8,10 @@ import {
 import ImageItem from '../image-item/image-item';
 
 const Slider = () => {
+  const {images} = cars[0];
+
   const [activeSlideImage, setActiveSlideImage] = useState({
-    id: sliderImages[0].ID,
+    id: images[0].id,
     index: 0,
     isFirstImage: true,
     isLastImage: false
@@ -28,9 +30,9 @@ const Slider = () => {
     );
 
   const renderThumbnailsList = () => {
-    return sliderImages.map((image) => {
+    return images.map((image) => {
       return <ImageItem 
-        key={image.ID} 
+        key={image.id} 
         type={ImageType.THUMBNAIL.name}
         image={image}
       /> 
@@ -38,11 +40,11 @@ const Slider = () => {
   };
 
   const renderSlideImage = () => {
-    const selectedSlideImage = sliderImages.find((image) => {
-      return image.ID === activeSlideImage.id
+    const selectedSlideImage = images.find((image) => {
+      return image.id === activeSlideImage.id
     });
     return <ImageItem 
-      key={selectedSlideImage.ID} 
+      key={selectedSlideImage.id} 
       type={ImageType.FULL.name}
       image={selectedSlideImage}
     /> 
@@ -50,25 +52,25 @@ const Slider = () => {
 
   const getTargetImage = (buttonType) => {
     if (buttonType === ButtonType.NEXT) {
-      return sliderImages[activeSlideImage.index + 1]
+      return images[activeSlideImage.index + 1]
     } else if (buttonType === ButtonType.PREVIOUS) {
-      return sliderImages[activeSlideImage.index - 1]
+      return images[activeSlideImage.index - 1]
     }
   };
 
   const isExtremeImage = (buttonType, imageIndex) => {
     if (buttonType === ButtonType.NEXT) {
-      return (imageIndex === sliderImages.length - 1)
+      return (imageIndex === images.length - 1)
     } else if (buttonType === ButtonType.PREVIOUS) {
       return (imageIndex === 0)
     }
   }
 
   const changeActiveSlide = (targetImage) => {
-    const targetImageIndex = sliderImages.indexOf(targetImage);
+    const targetImageIndex = images.indexOf(targetImage);
     setActiveSlideImage({
       ...activeSlideImage,
-      id: targetImage.ID,
+      id: targetImage.id,
       index: targetImageIndex,
       isFirstImage: isExtremeImage(ButtonType.PREVIOUS, targetImageIndex),
       isLastImage: isExtremeImage(ButtonType.NEXT, targetImageIndex)

@@ -14,7 +14,7 @@ const ImageItem = (props) => {
     <img 
       className={imageItemClass}
       src={image[type]}
-      alt={image.ALT}
+      alt={image.alt}
       width={ImageType[type].width}
       height={ImageType[type].height}
     /> 

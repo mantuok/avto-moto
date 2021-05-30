@@ -67,27 +67,6 @@ export const NavigationType = {
   FOOTER: `footer`
 };
 
-export const sliderImages = [
-  {
-    ID: nanoid(),
-    ALT: `Внешний вид автомобиля`,
-    FULL: `./img/slider-exterior.jpg`,
-    THUMBNAIL: `./img/thumbnail-exterior.jpg`
-  },
-  {
-    ID: nanoid(),
-    ALT: `Салон автомобиля`,
-    FULL: `./img/slider-interior.jpg`,
-    THUMBNAIL: `./img/thumbnail-interior.jpg`
-  },
-  {
-    ID: nanoid(),
-    ALT: `Приборная панель автомобиля`,
-    FULL: `./img/slider-speed.jpg`,
-    THUMBNAIL: `./img/thumbnail-speed.jpg`
-  }
-];
-
 export const ImageType = {
   FULL: {
     name: `FULL`,
@@ -105,37 +84,37 @@ export const FeatureItem = {
   transmission: {
     ID: nanoid(),
     NAME: `Трансмиссия`,
-    VALUE: `Роботизированная`
+    NAME_EN: `transmission`
   },
   power: {
     ID: nanoid(),
     NAME: `Мощность двигателя, л.с.`,
-    VALUE: `249`
+    NAME_EN: `power`
   },
   type: {
     ID: nanoid(),
     NAME: `Тип двигателя`,
-    VALUE: `Бензиновый`
+    NAME_EN: `type`
   },
   wheels: {
     ID: nanoid(),
     NAME: `Привод`,
-    VALUE: `Полный`
+    NAME_EN: `wheelsDrive`
   },
   size: {
     ID: nanoid(),
     NAME: `Объем двигателя, л`,
-    VALUE: `2.4`
+    NAME_EN: `size`
   },
   torque: {
     ID: nanoid(),
     NAME: `Макс. крутящий момент`,
-    VALUE: `370/4500`
+    NAME_EN: `torque`
   },
   cylinders: {
     ID: nanoid(),
     NAME: `Количество цилиндров`,
-    VALUE: `4`
+    NAME_EN: `cylinders`
   }
 };
 

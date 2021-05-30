@@ -1,36 +1,38 @@
 import {nanoid} from 'nanoid';
 
-export const autos = [
+export const cars = [
   {
     id: 1,
     name: `Марпех 11`,
-    newPrice: `2 300 000 ₽`,
+    price: `2 300 000 ₽`,
     oldPrice: `2 400 000 ₽`,
+    fuel: `бензин`,
     transmission: `Роботизированная`,
+    transmissionShort: `механика`,
     power: `249`,
     type: `Бензиновый`,
     wheelsDrive: `Полный`,
     size: `2.4`,
     torque: `370/4500`,
-    cyllinders: `4`,
-    photos: [
+    cylinders: `4`,
+    images: [
       {
         id: nanoid(),
         alt: `Внешний вид автомобиля`,
-        full: `./img/slider-exterior.jpg`,
-        thumbnail: `./img/thumbnail-exterior.jpg`
+        FULL: `./img/slider-exterior.jpg`,
+        THUMBNAIL: `./img/thumbnail-exterior.jpg`
       },
       {
         id: nanoid(),
         alt: `Салон автомобиля`,
-        full: `./img/slider-interior.jpg`,
-        thumbnail: `./img/thumbnail-interior.jpg`
+        FULL: `./img/slider-interior.jpg`,
+        THUMBNAIL: `./img/thumbnail-interior.jpg`
       },
       {
         id: nanoid(),
         alt: `Приборная панель автомобиля`,
-        full: `./img/slider-speed.jpg`,
-        thumbnail: `./img/thumbnail-speed.jpg`
+        FULL: `./img/slider-speed.jpg`,
+        THUMBNAIL: `./img/thumbnail-speed.jpg`
       }
     ]
   }
