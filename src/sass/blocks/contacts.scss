@@ -33,3 +33,21 @@
     margin-bottom: 20px;;
   }
 }
+
+.contacts__map {
+  position: relative;
+
+  &--interactive {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 1;
+  }
+
+  &--static {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

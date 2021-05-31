@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactsMap from '../contacts-map/contacts-map';
 
 const ContactsTab = () => {
   return (
@@ -14,7 +15,7 @@ const ContactsTab = () => {
         <a className="contacts__contact contacts__contact--email" href="info@avto-moto.ru">info@avto-moto.ru</a>
       </div>
       <div className="contacts__map">
-        <img src="../img/contacts-map.jpg" width="431" height="271" alt="Санкт-Петербург, набережная реки Карповки, дом 5" />
+        <ContactsMap />
       </div>
     </section>
   )

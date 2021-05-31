@@ -18,6 +18,8 @@ const DetailedInfo = () => {
         return <ReviewsTab />;
       case TabButtonType.CONTACTS:
         return <ContactsTab />
+      default:
+        return <FeaturesTab />;
     }
   }
 
