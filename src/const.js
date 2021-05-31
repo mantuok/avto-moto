@@ -124,3 +124,9 @@ export const ButtonType = {
 }
 
 export const RecommendRating = 3;
+
+export const TabButtonType = {
+  DETAILED_FEATURES: `detailed-features`,
+  REVIEWS: `reviews`,
+  CONTACTS: `contacts`
+}
