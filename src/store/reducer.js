@@ -4,7 +4,8 @@ import {reviews} from '../mocks/reviews';
 
 const initialState = {
   cars: cars,
-  reviews: reviews
+  reviews: reviews,
+  popupToBeOpen: true
 }
 
 const reducer = (state = initialState, action) => {
@@ -13,6 +14,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         reviews: [...state.reviews, action.payload]
+      }
+    case ActionType.OPEN_POPUP:
+      return {
+        ...state,
+        popupToBeOpen: true
+      }
+    case ActionType.CLOSE_POPUP:
+      return {
+        ...state,
+        popupToBeOpen: false
       }
     default: 
       return state;
