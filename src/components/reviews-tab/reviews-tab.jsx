@@ -1,8 +1,9 @@
 import React from 'react';
-import {reviews} from '../../mocks/reviews';
+import {connect} from 'react-redux';
 import Review from '../reivew/review';
 
-const ReviewsTab = () => {
+const ReviewsTab = (props) => {
+  const {reviews} = props;
 
   const renderReviews = () => {
     return reviews.map((review) => {
@@ -23,4 +24,8 @@ const ReviewsTab = () => {
   )
 };
 
-export default ReviewsTab;
+const mapStateToProps = (state) => ({
+  reviews: state.reviews
+})
+
+export default connect(mapStateToProps, null)(ReviewsTab);

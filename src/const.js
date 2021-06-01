@@ -130,3 +130,14 @@ export const TabButtonType = {
   REVIEWS: `reviews`,
   CONTACTS: `contacts`
 }
+
+export const StarType = {
+  active: {
+    NAME: `active`,
+    SRC: `../img/icon-star-active.svg`
+  },
+  inactive: {
+    NAME: `inactive`,
+    SRC: `../img/icon-star-inactive.svg`
+  }
+}

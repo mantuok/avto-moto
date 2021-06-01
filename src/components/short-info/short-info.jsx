@@ -1,7 +1,8 @@
 import React from 'react';
-import {cars} from '../../mocks/cars';
+import {connect} from 'react-redux'
 
-const ShortInfo = () => {
+const ShortInfo = (props) => {
+  const {cars} = props;
   const {name, fuel, transmissionShort, power, size, price, oldPrice} = cars[0];
 
   return (
@@ -23,4 +24,8 @@ const ShortInfo = () => {
   )
 }
 
-export default ShortInfo;
+const mapStateToProps = (state) => ({
+  cars: state.cars
+})
+
+export default connect(mapStateToProps, null)(ShortInfo);

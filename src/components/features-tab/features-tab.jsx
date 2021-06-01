@@ -1,12 +1,13 @@
 import React from 'react';
+import {connect} from 'react-redux'
 import Feature from '../feature/feature';
 import {FeatureItem} from '../../const';
-import {cars} from '../../mocks/cars';
 
-const FeaturesTab = () => {
-  const featuresList = Object.values(FeatureItem);
-
+const FeaturesTab = (props) => {
+  const {cars} = props;
   const car = cars[0];
+
+  const featuresList = Object.values(FeatureItem);
 
   const renderFeaturesList = () => {
     return featuresList.map((item) => {
@@ -27,4 +28,9 @@ const FeaturesTab = () => {
   )
 };
 
-export default FeaturesTab;
+
+const mapStateToProps = (state) => ({
+  cars: state.cars
+})
+
+export default connect(mapStateToProps, null)(FeaturesTab);
