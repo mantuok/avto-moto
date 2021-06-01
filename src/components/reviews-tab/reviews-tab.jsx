@@ -7,6 +7,8 @@ import NewReview from '../new-review/new-reivew';
 const ReviewsTab = (props) => {
   const {reviews, popupToBeOpen, onOpenPopup} = props;
 
+  console.log(reviews)
+
   const renderReviews = () => {
     return reviews.map((review) => {
       return <Review 
