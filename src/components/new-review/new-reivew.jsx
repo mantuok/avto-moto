@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../../store/action';
 
 
-const NewReview = () => {
+const NewReview = (props) => {
+  const {onClosePopup} = props;
+
   const [formData, setFormData] = useState({
     authorName: ``,
     advantages: ``,
@@ -17,6 +21,10 @@ const NewReview = () => {
 
   const handleFormSubmit = () => {
 
+  }
+
+  const handleCloseButtonClick = () => {
+    onClosePopup();
   }
   
   return (
@@ -74,10 +82,21 @@ const NewReview = () => {
           </button>
 
         </form>
-        <button className="new_review__close-button"><span className="new_review__close-text visually-hidden">Закрыть</span></button>
+        <button 
+          className="new_review__close-button"
+          onClick={handleCloseButtonClick}
+        >
+          <span className="new_review__close-text visually-hidden">Закрыть</span>
+        </button>
       </div>
     </section>
   )
 }
 
-export default NewReview;
+const mapDispatchToProps = (dispatch) => ({
+  onClosePopup() {
+    dispatch(ActionCreator.closePopup())
+  }
+});
+
+export default connect(null, mapDispatchToProps)(NewReview);

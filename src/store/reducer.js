@@ -5,7 +5,7 @@ import {reviews} from '../mocks/reviews';
 const initialState = {
   cars: cars,
   reviews: reviews,
-  popupToBeOpen: true
+  popupToBeOpen: false
 }
 
 const reducer = (state = initialState, action) => {
