@@ -19,7 +19,7 @@ const NewReview = (props) => {
     comment: ``,
     rating: 0,
     ratingOnHover: 0,
-    // invalidFields: `` 
+    invalidFields: `` 
   })
 
   const composeNewReview = () => {
@@ -46,7 +46,7 @@ const NewReview = (props) => {
     //   console.log(`empty author`)
     //   setFormData({
     //     ...formData,
-    //     invalidFields: [...formData.invalidFields, requiredField.AUTHOR]
+    //     invalidFields: requiredField.AUTHOR
     //   })
     // }
 
@@ -75,7 +75,7 @@ const NewReview = (props) => {
 
   
   const renderErrorMessage = (inputName) => {
-    if (formData.invalidFields.includes(inputName)) {
+    if (formData.invalidFields === requiredField.AUTHOR) {
       return <ErrorMessage />
     }
   };
@@ -95,7 +95,6 @@ const NewReview = (props) => {
   };
 
   const onSelectRating = (index) => {
-    console.log(`submit`)
     setFormData({
       ...formData,
       rating: index
@@ -111,12 +110,10 @@ const NewReview = (props) => {
   };
 
   const handleFormSubmit = (evt) => {
-    // debugger
     evt.preventDefault();
     // checkValidity();
-    console.log(formData.invalidFields)
-    // if (formData.invalidFields.length === 0) {
-    if (formData.author !== `` || formData.comment !== ``) {
+    if (formData.author !== `` || formData.comment !==``) {
+    // if (formData.author !== `` || formData.comment !== ``) {
       const newReviewData = composeNewReview();
       onSubmitReview(newReviewData);
       onClosePopup();
@@ -136,24 +133,27 @@ const NewReview = (props) => {
           action=""
           onSubmit={handleFormSubmit}
         >
-          <label className="form__label--author visually hidden" htmlFor="author">Имя</label>
+          <label className="form__label form__label--author visually-hidden" htmlFor="author">Имя</label>
           <input 
-            className="form__input--author" 
+            className="form__input form__input--author" 
             type="text" 
             name="author" 
             id="author" 
             placeholder="Имя" 
             value={formData.author}
             onInput={handleInputChange}
-            required 
+            // required 
           />
-          {/* {renderErrorMessage(requiredField.AUTHOR)} */}
-          <div className="form__rating">
-            {renderRatingStars()}
+          {renderErrorMessage(requiredField.AUTHOR)}
+          <div className="form__rating form-rating">
+            <span className="form-rating__text">Оцените товар:</span>
+            <div className="form-rating__stars">
+              {renderRatingStars()}
+            </div>
           </div>
-          <label className="form__label--advantages visually hidden" htmlFor="advantages">Достоинства</label>
+          <label className="form__label form__label--advantages visually-hidden" htmlFor="advantages">Достоинства</label>
           <input 
-            className="form__input--advantages" 
+            className="form__input form__input--advantages" 
             type="text" 
             name="advantages" 
             id="advantages" 
@@ -161,9 +161,9 @@ const NewReview = (props) => {
             value={formData.advantages}
             onInput={handleInputChange}
           />
-          <label className="form__label--disadvantages visually hidden" htmlFor="disadvantages">Недостатки</label>
+          <label className="form__label form__label--disadvantages visually-hidden" htmlFor="disadvantages">Недостатки</label>
           <input 
-            className="form__input--disadvantages" 
+            className="form__input form__input--disadvantages" 
             type="text" 
             name="disadvantages" 
             id="disadvantages" 
@@ -171,16 +171,16 @@ const NewReview = (props) => {
             value={formData.disadvantages}
             onInput={handleInputChange}
           />
-          <label className="form__label--comment visually hidden" htmlFor="comment">Комментарий</label>
+          <label className="form__label form__label--comment visually-hidden" htmlFor="comment">Комментарий</label>
           <textarea 
-            className="form__input--comment" 
+            className="form__input form__input--comment" 
             rows="3" 
             name="comment" 
             id="comment" 
             placeholder="Комментарий" 
             value={formData.comment}
             onInput={handleInputChange}
-            required
+            // required
           />
           <button 
             className="form__submit" 
@@ -191,7 +191,7 @@ const NewReview = (props) => {
 
         </form>
         <button 
-          className="new_review__close-button"
+          className="new-review__close-button"
           onClick={handleCloseButtonClick}
         >
           <span className="new_review__close-text visually-hidden">Закрыть</span>

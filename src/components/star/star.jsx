@@ -16,6 +16,7 @@ const Star = (props) => {
 
   return (
     <img 
+      className="form-rating__star"
       src={getStarImage()} 
       width="27" 
       height="27" 

@@ -1,0 +1,59 @@
+.form {
+  display: grid;
+  grid-template-areas:
+    "author rating"
+    "advantages comment"
+    "disadvantages comment"
+    "submit submit";
+  row-gap: 18px;
+  column-gap: 28px;
+}
+
+.form__input {
+  width: 300px;
+  height: 50px;
+  padding-top: 15px;
+  padding-right: 25px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  border: 1px solid var(--extra-light-decorative);
+
+  &--author {
+    grid-area: author;
+  }
+
+  &--rating {
+    grid-area: rating;
+  }
+
+  &--advantages {
+    grid-area: advantages;
+  }
+
+  &--disadvantages {
+    grid-area: disadvantages;
+    margin-bottom: 20px;
+  }
+
+  &--comment {
+    grid-area: comment;
+    height: 118px;
+    margin-bottom: 20px;
+  }
+}
+
+.form__submit {
+  @include button-contrast;
+
+  grid-area: submit;
+  justify-self: center;
+
+  padding-top: 17px;
+  padding-right: 21px;
+  padding-bottom: 16px;
+  padding-left: 21px;
+}
