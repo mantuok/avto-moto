@@ -131,6 +131,10 @@ export const TabButtonType = {
   CONTACTS: `contacts`
 }
 
+export const STAR_NUMBER = 5;
+
+export const STAR_ARRAY = Array.from(Array(STAR_NUMBER).keys(), (_,x) => x + 1)
+
 export const StarType = {
   active: {
     NAME: `active`,
@@ -140,4 +144,13 @@ export const StarType = {
     NAME: `inactive`,
     SRC: `../img/icon-star-inactive.svg`
   }
+}
+
+export const ErrorType = {
+  EMPTY_FIELD: `Пожалуйста, заполните поле`
+}
+
+export const requiredField = {
+  AUTHOR: `author`,
+  COMMENT: `comment`
 }

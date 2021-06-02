@@ -2,13 +2,15 @@ import React from 'react';
 import {StarType} from '../../const';
 
 const Star = (props) => {
-  const {starIndex, rating, hoverRating, onMouseEnter, onMouseLeave, onSubmitRating,}
+  const {starIndex, rating, ratingOnHover, onMouseEnter, onMouseLeave, onSelectRating} = props;
 
   const getStarImage = () => {
-    if (hoverRating >= starRating) {
+    if (ratingOnHover >= starIndex) {
+      return StarType.active.SRC;
+    } else if (!ratingOnHover && rating >= starIndex) {
       return StarType.active.SRC;
     } else {
-      return StarType.inactive.SRC
+      return StarType.inactive.SRC;
     }
   }
 
@@ -20,7 +22,7 @@ const Star = (props) => {
       alt="Звезда" 
       onMouseEnter={() => onMouseEnter(starIndex)}
       onMouseLeave={onMouseLeave}
-      onSubmitRating = {onSubmitRating}
+      onClick = {() => onSelectRating(starIndex)}
     />
   )
 }

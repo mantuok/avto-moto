@@ -1,8 +1,13 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
-import {nanoid} from 'nanoid'
-
+import {nanoid} from 'nanoid';
+import ErrorMessage from '../error-message/error-message';
+import Star from '../star/star';
+import {
+  requiredField,
+  STAR_ARRAY
+} from '../../const';
 
 const NewReview = (props) => {
   const {onClosePopup, onSubmitReview} = props;
@@ -12,9 +17,90 @@ const NewReview = (props) => {
     advantages: ``,
     disadvantages: ``,
     comment: ``,
-    rating: ``,
-    ratingOnHover: ``
+    rating: 0,
+    ratingOnHover: 0,
+    // invalidFields: `` 
   })
+
+  const composeNewReview = () => {
+    return {
+       ...formData,
+       id: nanoid(),
+       carId: 1,
+       date: new Date(),
+     }
+   }
+
+   const checkValidity = () => {
+    //  Object.values(requiredField).map((field) => {
+    //   console.log(formData.field)
+    //   if (formData.field === ``) {
+    //     setFormData({
+    //       ...formData,
+    //       invalidFields: [...setFormData.invalidFields, field]
+    //     })
+    //   } 
+    //  })
+ 
+    // if (formData.author === ``) {
+    //   console.log(`empty author`)
+    //   setFormData({
+    //     ...formData,
+    //     invalidFields: [...formData.invalidFields, requiredField.AUTHOR]
+    //   })
+    // }
+
+    // if (formData.comment === ``) {
+    //   setFormData({
+    //     ...formData,
+    //     invalidFields: [...formData.invalidFields, requiredField.COMMENT]
+    //   })
+    // }
+   }
+
+  const renderRatingStars = () => {
+    // debugger    
+    return STAR_ARRAY.map((starIndex) => {
+      return <Star
+        key={nanoid()}
+        starIndex={starIndex}
+        rating={formData.rating}
+        ratingOnHover={formData.ratingOnHover}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onSelectRating={onSelectRating}
+       />
+    })
+  }
+
+  
+  const renderErrorMessage = (inputName) => {
+    if (formData.invalidFields.includes(inputName)) {
+      return <ErrorMessage />
+    }
+  };
+
+  const onMouseEnter = (index) => {
+    setFormData({
+      ...formData,
+      ratingOnHover: index
+    })
+  };
+
+  const onMouseLeave = () => {
+    setFormData({
+      ...formData,
+      ratingOnHover: 0
+    })
+  };
+
+  const onSelectRating = (index) => {
+    console.log(`submit`)
+    setFormData({
+      ...formData,
+      rating: index
+    })
+  };
 
   const handleInputChange = (evt) => {
     const {name, value} = evt.target;
@@ -24,20 +110,17 @@ const NewReview = (props) => {
     })
   };
 
-  const composeNewReview = () => {
-   return {
-      ...formData,
-      id: nanoid(),
-      carId: 1,
-      date: new Date(),
-      rating: 5
-    }
-  }
-
   const handleFormSubmit = (evt) => {
+    // debugger
     evt.preventDefault();
-    const newReviewData = composeNewReview();
-    onSubmitReview(newReviewData);
+    // checkValidity();
+    console.log(formData.invalidFields)
+    // if (formData.invalidFields.length === 0) {
+    if (formData.author !== `` || formData.comment !== ``) {
+      const newReviewData = composeNewReview();
+      onSubmitReview(newReviewData);
+      onClosePopup();
+    } 
   }
 
   const handleCloseButtonClick = () => {
@@ -64,6 +147,10 @@ const NewReview = (props) => {
             onInput={handleInputChange}
             required 
           />
+          {/* {renderErrorMessage(requiredField.AUTHOR)} */}
+          <div className="form__rating">
+            {renderRatingStars()}
+          </div>
           <label className="form__label--advantages visually hidden" htmlFor="advantages">Достоинства</label>
           <input 
             className="form__input--advantages" 
@@ -93,11 +180,11 @@ const NewReview = (props) => {
             placeholder="Комментарий" 
             value={formData.comment}
             onInput={handleInputChange}
+            required
           />
           <button 
             className="form__submit" 
             type="submit"
-            // onSubmit={handleFormSubmit}
           >
             ОСТАВИТЬ ОТЗЫВ
           </button>
