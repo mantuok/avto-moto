@@ -6,7 +6,7 @@ import classnames from 'classnames'
 import ErrorMessage from '../error-message/error-message';
 import Star from '../star/star';
 import {
-  requiredField,
+  RequiredField,
   STAR_ARRAY
 } from '../../const';
 
@@ -20,7 +20,8 @@ const NewReview = (props) => {
     comment: ``,
     rating: 0,
     ratingOnHover: 0,
-    invalidFields: `` 
+    isFormInvalid: false
+    
   })
 
   const composeNewReview = () => {
@@ -32,42 +33,47 @@ const NewReview = (props) => {
      }
    }
 
-  const checkValidity = () => {
+  const setInvalidFields = () => {
   //  Object.values(requiredField).map((field) => {
-  //   console.log(formData.field)
-  //   if (formData.field === ``) {
+  //    debugger
+  //   console.log(field)
+  //   if (formData[field] === ``) {
   //     setFormData({
   //       ...formData,
-  //       invalidFields: [...setFormData.invalidFields, field]
+  //       invalidFields: [...formData.invalidFields, field]
   //     })
   //   } 
   //  })
  
-  if (formData.author === ``) {
-    console.log(`empty author`)
     setFormData({
       ...formData,
-      invalidFields: requiredField.AUTHOR
+      isFormInvalid: true
     })
-  }
+  // if (formData.author === ``) {
+  //   debugger
+  //   setFormData({
+  //     ...formData,
+  //     isAuthorInvalid: true
+  //   })
+  // }
 
   // if (formData.comment === ``) {
   //   setFormData({
   //     ...formData,
-  //     invalidFields: [...formData.invalidFields, requiredField.COMMENT]
+  //     isCommentInvalid: true
   //   })
   // }
   }
 
   const getRequiredFieldClass = (fieldName) => {
     return classnames(
-      {"form__input--invalid" : formData.invalidFields.includes(fieldName)},
-      `form__input--${fieldName}`
+      {"form__input--invalid" : formData.isFormInvalid && formData[fieldName] === ``},
+      `form__input--${fieldName}`,
+      `form__input`
     )
   }
 
   const renderRatingStars = () => {
-    // debugger    
     return STAR_ARRAY.map((starIndex) => {
       return <Star
         key={nanoid()}
@@ -81,8 +87,11 @@ const NewReview = (props) => {
     })
   }
 
-  const renderErrorMessage = (inputName) => {
-    if (formData.invalidFields === requiredField.AUTHOR) {
+  const renderErrorMessage = (fieldName) => {
+    if (fieldName === RequiredField.AUTHOR && formData.author === `` && formData.isFormInvalid) {
+      return <ErrorMessage />
+    }
+    if (fieldName === RequiredField.COMMENT && formData.comment === `` && formData.isFormInvalid) {
       return <ErrorMessage />
     }
   };
@@ -114,18 +123,24 @@ const NewReview = (props) => {
       ...formData,
       [name]: value
     })
+    // if (formData.invalidFields.includes(name)) {
+    //   setFormData({
+    //     ...formData,
+    //     invalidFields: []
+    //   })
+    // }
   };
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
-    // checkValidity();
-    if (formData.author !== `` || formData.comment !==``) {
+    // setInvalidFields();
+    if (formData.author !== `` && formData.comment !==``) {
     // if (formData.author !== `` || formData.comment !== ``) {
       const newReviewData = composeNewReview();
       onSubmitReview(newReviewData);
       onClosePopup();
     } else {
-      checkValidity();
+      setInvalidFields();
     }
   }
 
@@ -145,7 +160,7 @@ const NewReview = (props) => {
           <div className="form__required-wrapper form__required-wrapper--author">
             <label className="form__label form__label--author visually-hidden" htmlFor="author">Имя</label>
             <input 
-              className="form__input form__input--author" 
+              className={getRequiredFieldClass(RequiredField.AUTHOR)} 
               type="text" 
               name="author" 
               id="author" 
@@ -154,7 +169,7 @@ const NewReview = (props) => {
               onInput={handleInputChange}
               // required 
             />
-            {renderErrorMessage(requiredField.AUTHOR)}
+            {renderErrorMessage(RequiredField.AUTHOR)}
           </div>
           <div className="form__rating form-rating">
             <span className="form-rating__text">Оцените товар:</span>
@@ -185,7 +200,7 @@ const NewReview = (props) => {
           <div className="form__required-wrapper form__required-wrapper--comment">
             <label className="form__label form__label--comment visually-hidden" htmlFor="comment">Комментарий</label>
             <textarea 
-              className="form__input form__input--comment" 
+              className={getRequiredFieldClass(RequiredField.COMMENT)} 
               rows="3" 
               name="comment" 
               id="comment" 
@@ -194,7 +209,7 @@ const NewReview = (props) => {
               onInput={handleInputChange}
               // required
             />
-            {renderErrorMessage(requiredField.COMMENT)}
+            {renderErrorMessage(RequiredField.COMMENT)}
           </div>
           <button 
             className="form__submit" 

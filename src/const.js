@@ -150,7 +150,8 @@ export const ErrorType = {
   EMPTY_FIELD: `Пожалуйста, заполните поле`
 }
 
-export const requiredField = {
-  AUTHOR: `author`,
-  COMMENT: `comment`
+export const RequiredField = {
+  COMMENT: `comment`,
+  AUTHOR: `author`
+  
 }
