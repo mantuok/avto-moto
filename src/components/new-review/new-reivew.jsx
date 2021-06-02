@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import {nanoid} from 'nanoid';
+import classnames from 'classnames'
 import ErrorMessage from '../error-message/error-message';
 import Star from '../star/star';
 import {
@@ -31,32 +32,39 @@ const NewReview = (props) => {
      }
    }
 
-   const checkValidity = () => {
-    //  Object.values(requiredField).map((field) => {
-    //   console.log(formData.field)
-    //   if (formData.field === ``) {
-    //     setFormData({
-    //       ...formData,
-    //       invalidFields: [...setFormData.invalidFields, field]
-    //     })
-    //   } 
-    //  })
+  const checkValidity = () => {
+  //  Object.values(requiredField).map((field) => {
+  //   console.log(formData.field)
+  //   if (formData.field === ``) {
+  //     setFormData({
+  //       ...formData,
+  //       invalidFields: [...setFormData.invalidFields, field]
+  //     })
+  //   } 
+  //  })
  
-    // if (formData.author === ``) {
-    //   console.log(`empty author`)
-    //   setFormData({
-    //     ...formData,
-    //     invalidFields: requiredField.AUTHOR
-    //   })
-    // }
+  if (formData.author === ``) {
+    console.log(`empty author`)
+    setFormData({
+      ...formData,
+      invalidFields: requiredField.AUTHOR
+    })
+  }
 
-    // if (formData.comment === ``) {
-    //   setFormData({
-    //     ...formData,
-    //     invalidFields: [...formData.invalidFields, requiredField.COMMENT]
-    //   })
-    // }
-   }
+  // if (formData.comment === ``) {
+  //   setFormData({
+  //     ...formData,
+  //     invalidFields: [...formData.invalidFields, requiredField.COMMENT]
+  //   })
+  // }
+  }
+
+  const getRequiredFieldClass = (fieldName) => {
+    return classnames(
+      {"form__input--invalid" : formData.invalidFields.includes(fieldName)},
+      `form__input--${fieldName}`
+    )
+  }
 
   const renderRatingStars = () => {
     // debugger    
@@ -73,7 +81,6 @@ const NewReview = (props) => {
     })
   }
 
-  
   const renderErrorMessage = (inputName) => {
     if (formData.invalidFields === requiredField.AUTHOR) {
       return <ErrorMessage />
@@ -117,7 +124,9 @@ const NewReview = (props) => {
       const newReviewData = composeNewReview();
       onSubmitReview(newReviewData);
       onClosePopup();
-    } 
+    } else {
+      checkValidity();
+    }
   }
 
   const handleCloseButtonClick = () => {
@@ -133,18 +142,20 @@ const NewReview = (props) => {
           action=""
           onSubmit={handleFormSubmit}
         >
-          <label className="form__label form__label--author visually-hidden" htmlFor="author">Имя</label>
-          <input 
-            className="form__input form__input--author" 
-            type="text" 
-            name="author" 
-            id="author" 
-            placeholder="Имя" 
-            value={formData.author}
-            onInput={handleInputChange}
-            // required 
-          />
-          {renderErrorMessage(requiredField.AUTHOR)}
+          <div className="form__required-wrapper form__required-wrapper--author">
+            <label className="form__label form__label--author visually-hidden" htmlFor="author">Имя</label>
+            <input 
+              className="form__input form__input--author" 
+              type="text" 
+              name="author" 
+              id="author" 
+              placeholder="Имя" 
+              value={formData.author}
+              onInput={handleInputChange}
+              // required 
+            />
+            {renderErrorMessage(requiredField.AUTHOR)}
+          </div>
           <div className="form__rating form-rating">
             <span className="form-rating__text">Оцените товар:</span>
             <div className="form-rating__stars">
@@ -171,17 +182,20 @@ const NewReview = (props) => {
             value={formData.disadvantages}
             onInput={handleInputChange}
           />
-          <label className="form__label form__label--comment visually-hidden" htmlFor="comment">Комментарий</label>
-          <textarea 
-            className="form__input form__input--comment" 
-            rows="3" 
-            name="comment" 
-            id="comment" 
-            placeholder="Комментарий" 
-            value={formData.comment}
-            onInput={handleInputChange}
-            // required
-          />
+          <div className="form__required-wrapper form__required-wrapper--comment">
+            <label className="form__label form__label--comment visually-hidden" htmlFor="comment">Комментарий</label>
+            <textarea 
+              className="form__input form__input--comment" 
+              rows="3" 
+              name="comment" 
+              id="comment" 
+              placeholder="Комментарий" 
+              value={formData.comment}
+              onInput={handleInputChange}
+              // required
+            />
+            {renderErrorMessage(requiredField.COMMENT)}
+          </div>
           <button 
             className="form__submit" 
             type="submit"

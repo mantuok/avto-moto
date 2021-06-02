@@ -56,3 +56,18 @@
     background-color: var(--dark-contrast);
   }
 }
+
+@mixin asterisk {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 12px;
+
+  width: 8px;
+  height: 21px;
+
+  background-image: url("../../img/icon-asterisk.svg");
+  background-repeat: no-repeat;
+
+  z-index: 1;
+}

@@ -10,6 +10,8 @@
 }
 
 .form__input {
+  position: relative;
+
   width: 300px;
   height: 50px;
   padding-top: 15px;
@@ -23,7 +25,24 @@
   border: 1px solid var(--extra-light-decorative);
 
   &--author {
-    grid-area: author;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 11px;
+      left: 0;
+  
+      width: 8px;
+      height: 21px;
+  
+      // background-image: url("../../img/icon-minus.svg");
+      // background-repeat: no-repeat;
+
+      // z-index: 10;
+      background-image: url("../../img/icon-asterisk.svg");
+      background-repeat: no-repeat;
+    }
   }
 
   &--rating {
@@ -40,9 +59,43 @@
   }
 
   &--comment {
-    grid-area: comment;
+    // grid-area: comment;
     height: 118px;
+    // margin-bottom: 20px;
+  }
+
+  &--error {
+    position: absolute;
+    top: -24px;
+    left: 2px;
+
+    font-size: 14px;
+    color: var(--warning)
+  }
+
+  &--invalid {
+    border: 1px solid var(--warning);
+  }
+}
+
+.form__required-wrapper {
+  position: relative;
+
+  &--author {
+    grid-area: author;
+
+    &::before {
+      @include asterisk;
+    }
+  }
+
+  &--comment {
+    grid-area: comment;
     margin-bottom: 20px;
+
+    &::before {
+      @include asterisk;
+    }
   }
 }
 
