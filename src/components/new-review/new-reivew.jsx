@@ -21,8 +21,9 @@ const NewReview = (props) => {
     rating: 0,
     ratingOnHover: 0,
     isFormInvalid: false
-    
-  })
+  });
+
+  const isFormValid = formData.author !== `` && formData.comment !==``
 
   const composeNewReview = () => {
     return {
@@ -33,36 +34,11 @@ const NewReview = (props) => {
      }
    }
 
-  const setInvalidFields = () => {
-  //  Object.values(requiredField).map((field) => {
-  //    debugger
-  //   console.log(field)
-  //   if (formData[field] === ``) {
-  //     setFormData({
-  //       ...formData,
-  //       invalidFields: [...formData.invalidFields, field]
-  //     })
-  //   } 
-  //  })
- 
+  const setInvalidStatus = () => {
     setFormData({
       ...formData,
       isFormInvalid: true
     })
-  // if (formData.author === ``) {
-  //   debugger
-  //   setFormData({
-  //     ...formData,
-  //     isAuthorInvalid: true
-  //   })
-  // }
-
-  // if (formData.comment === ``) {
-  //   setFormData({
-  //     ...formData,
-  //     isCommentInvalid: true
-  //   })
-  // }
   }
 
   const getRequiredFieldClass = (fieldName) => {
@@ -88,12 +64,16 @@ const NewReview = (props) => {
   }
 
   const renderErrorMessage = (fieldName) => {
-    if (fieldName === RequiredField.AUTHOR && formData.author === `` && formData.isFormInvalid) {
-      return <ErrorMessage />
-    }
-    if (fieldName === RequiredField.COMMENT && formData.comment === `` && formData.isFormInvalid) {
-      return <ErrorMessage />
-    }
+    return Object.values(RequiredField).map((requiredFieldName) => {
+      if (fieldName === requiredFieldName &&
+          formData[fieldName] === `` &&
+          formData.isFormInvalid
+        ) {
+        return <ErrorMessage key={nanoid()} />;
+      } else {
+        return ``;
+      }
+    })
   };
 
   const onMouseEnter = (index) => {
@@ -123,24 +103,16 @@ const NewReview = (props) => {
       ...formData,
       [name]: value
     })
-    // if (formData.invalidFields.includes(name)) {
-    //   setFormData({
-    //     ...formData,
-    //     invalidFields: []
-    //   })
-    // }
   };
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
-    // setInvalidFields();
-    if (formData.author !== `` && formData.comment !==``) {
-    // if (formData.author !== `` || formData.comment !== ``) {
+    if (isFormValid) {
       const newReviewData = composeNewReview();
       onSubmitReview(newReviewData);
       onClosePopup();
     } else {
-      setInvalidFields();
+      setInvalidStatus();
     }
   }
 
@@ -167,7 +139,6 @@ const NewReview = (props) => {
               placeholder="Имя" 
               value={formData.author}
               onInput={handleInputChange}
-              // required 
             />
             {renderErrorMessage(RequiredField.AUTHOR)}
           </div>
@@ -207,7 +178,6 @@ const NewReview = (props) => {
               placeholder="Комментарий" 
               value={formData.comment}
               onInput={handleInputChange}
-              // required
             />
             {renderErrorMessage(RequiredField.COMMENT)}
           </div>
