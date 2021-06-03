@@ -5,7 +5,7 @@
     "advantages comment"
     "disadvantages comment"
     "submit submit";
-  row-gap: 18px;
+  row-gap: 14px;
   column-gap: 28px;
 }
 
@@ -35,11 +35,7 @@
   
       width: 8px;
       height: 21px;
-  
-      // background-image: url("../../img/icon-minus.svg");
-      // background-repeat: no-repeat;
 
-      // z-index: 10;
       background-image: url("../../img/icon-asterisk.svg");
       background-repeat: no-repeat;
     }
@@ -55,13 +51,11 @@
 
   &--disadvantages {
     grid-area: disadvantages;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
   &--comment {
-    // grid-area: comment;
     height: 118px;
-    // margin-bottom: 20px;
   }
 
   &--error {
@@ -91,7 +85,7 @@
 
   &--comment {
     grid-area: comment;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 
     &::before {
       @include asterisk;

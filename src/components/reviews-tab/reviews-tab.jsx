@@ -26,6 +26,7 @@ const ReviewsTab = (props) => {
 
   return (
     <section className="detailed-info__reivews reviews">
+      <h3 className="reviews__heading visually-hidden">Отзывы</h3>
       <ul className="reviews__list"> 
         {renderReviews()}
       </ul>

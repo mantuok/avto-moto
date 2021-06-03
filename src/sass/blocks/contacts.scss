@@ -1,18 +1,21 @@
 .contacts {
   display: flex;
+
+  padding-top: 16px;
 }
 
 .contacts__description {
   display: flex;
   flex-direction: column;
 
-  margin-right: 74px;
+  margin-right: 96px;
 }
 
 .contacts__heading {
   margin: 0;
   margin-bottom: 10px;
 
+  font-size: 16px;
   font-weight: 700;
 }
 
