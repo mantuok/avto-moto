@@ -39,6 +39,7 @@ const DetailedInfo = () => {
 
   return (
     <section className="main__detailed-info detailed-info">
+      <h2 className="detailed-info__heading visually-hidden">Детальная информация</h2>
       <div className="detailed-info__tabs">
         <button 
           className={getTabButtonClass(TabButtonType.DETAILED_FEATURES)}

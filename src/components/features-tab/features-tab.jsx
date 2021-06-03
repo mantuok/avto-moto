@@ -22,6 +22,7 @@ const FeaturesTab = (props) => {
 
   return (
     <section className="detailed-info__features detailed-features">
+      <h3 className="detailed-features visually-hidden">Детальные характеристики</h3>
       <ul className="detailed-features__list">
         {renderFeaturesList()}
       </ul>

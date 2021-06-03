@@ -91,6 +91,7 @@ const Slider = (props) => {
 
   return (
     <section className="main__slider slider">
+      <h2 className="slider__heading visually-hidden">Фотографии автомобиля</h2>
       <div className="slider__slides">
         {renderSlideImage()}
       </div>
