@@ -23,10 +23,10 @@ export const carPropTypes = PropTypes.shape({
 });
 
 export const reviewPropTypes = PropTypes.shape({
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   carId: PropTypes.number.isRequired,
   author: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
   advantages: PropTypes.string.isRequired,
   disadvantages: PropTypes.string.isRequired,
   comment: PropTypes.string.isRequired,
