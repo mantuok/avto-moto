@@ -1,4 +1,5 @@
 import React from 'react';
+import {PropTypes} from 'prop-types';
 import {StarType} from '../../const';
 
 const Star = (props) => {
@@ -27,5 +28,14 @@ const Star = (props) => {
     />
   )
 }
+
+Star.propTypes = {
+  starIndex: PropTypes.number.isRequired,
+  rating: PropTypes.number.isRequired,
+  ratingOnHover: PropTypes.number.isRequired,
+  onMouseEnter: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired,
+  onSelectRating: PropTypes.func.isRequired,
+};
 
 export default Star;

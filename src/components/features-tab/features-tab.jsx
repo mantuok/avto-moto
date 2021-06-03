@@ -1,5 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import {carsPropTypes} from '../../utils/props-validation';
 import Feature from '../feature/feature';
 import {FeatureItem} from '../../const';
 
@@ -27,6 +28,10 @@ const FeaturesTab = (props) => {
     </section>
   )
 };
+
+FeaturesTab.prototypes = {
+  cars: carsPropTypes
+}
 
 
 const mapStateToProps = (state) => ({

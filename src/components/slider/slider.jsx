@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 import classnames from 'classnames';
-import {cars} from '../../mocks/cars';
+import {connect} from 'react-redux';
+import {carsPropTypes} from '../../utils/props-validation';
 import {
   ImageType,
   ButtonType
 } from '../../const';
 import ImageItem from '../image-item/image-item';
 
-const Slider = () => {
+const Slider = (props) => {
+  const {cars} = props;
   const {images} = cars[0];
 
   const [activeSlideImage, setActiveSlideImage] = useState({
@@ -113,4 +115,12 @@ const Slider = () => {
   )
 }
 
-export default Slider;
+Slider.propTypes = {
+  cars: carsPropTypes
+};
+
+const mapStateToProps = (state) => ({
+  cars: state.cars
+})
+
+export default connect(mapStateToProps, null)(Slider);

@@ -1,5 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import {carsPropTypes} from '../../utils/props-validation';
 
 const ShortInfo = (props) => {
   const {cars} = props;
@@ -22,10 +23,14 @@ const ShortInfo = (props) => {
       <button className="short-info__loan">В КРЕДИТ ОТ 11 000 ₽</button>
     </section>
   )
-}
+};
+
+ShortInfo.propTypes = {
+  cars: carsPropTypes
+};
 
 const mapStateToProps = (state) => ({
   cars: state.cars
-})
+});
 
 export default connect(mapStateToProps, null)(ShortInfo);

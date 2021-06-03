@@ -1,4 +1,5 @@
 import React from 'react';
+import {PropTypes} from 'prop-types';
 
 const NavigationElement = (props) => {
   const {name, url} = props;
@@ -10,6 +11,11 @@ const NavigationElement = (props) => {
       </a>
     </li>
   );
+};
+
+NavigationElement.propTypes = {
+  name: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired 
 };
 
 export default NavigationElement;

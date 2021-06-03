@@ -1,4 +1,5 @@
 import React from 'react';
+import {reviewPropTypes} from '../../utils/props-validation';
 import {RecommendRating} from '../../const';
 import {getHumanDateFormat} from '../../utils/day';
 import {nanoid} from 'nanoid';
@@ -43,5 +44,9 @@ const Review = ({review}) => {
     </li>
   )
 }
+
+Review.propTypes = {
+  review: reviewPropTypes
+};
 
 export default Review;

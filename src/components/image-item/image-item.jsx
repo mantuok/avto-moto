@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import {PropTypes} from 'prop-types';
 import {ImageType} from '../../const';
 
 const ImageItem = (props) => {
@@ -20,5 +21,16 @@ const ImageItem = (props) => {
     /> 
   )
 };
+
+ImageItem.propTypes = {
+  type: PropTypes.string.isRequired,
+  image: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+    FULL: PropTypes.string.isRequired,
+    THUMBNAIL: PropTypes.string.isRequired
+  })
+  
+}
 
 export default ImageItem;

@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import {nanoid} from 'nanoid';
-import classnames from 'classnames'
+import classnames from 'classnames';
+import {PropTypes} from 'prop-types';
 import ErrorMessage from '../error-message/error-message';
 import Star from '../star/star';
 import {
@@ -199,6 +200,11 @@ const NewReview = (props) => {
     </section>
   )
 }
+
+NewReview.propTypes = {
+  onClosePopup: PropTypes.func.isRequired,
+  onSubmitReview: PropTypes.func.isRequired 
+};
 
 const mapDispatchToProps = (dispatch) => ({
   onClosePopup() {

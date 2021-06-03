@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
+import {PropTypes} from 'prop-types';
+import {reviewsPropTypes} from '../../utils/props-validation';
 import Review from '../reivew/review';
 import NewReview from '../new-review/new-reivew';
 
 const ReviewsTab = (props) => {
   const {reviews, popupToBeOpen, onOpenPopup} = props;
-
-  console.log(reviews)
 
   const renderReviews = () => {
     return reviews.map((review) => {
@@ -49,6 +49,12 @@ const mapDispatchToProps = (dispatch) => ({
   onOpenPopup() {
     dispatch(ActionCreator.openPopup())
   }
-})
+});
+
+ReviewsTab.propTypes = {
+  reviews: reviewsPropTypes,
+  onOpenPopup: PropTypes.func.isRequired,
+  popupToBeOpen: PropTypes.bool.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReviewsTab);

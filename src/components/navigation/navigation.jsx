@@ -1,12 +1,13 @@
 import React from 'react';
 import classnames from 'classnames';
-import NavigationElement from '../navigation-element/navigation-element' 
+import {PropTypes} from 'prop-types';
+import NavigationElement from '../navigation-element/navigation-element';
 import {
   NavigationType,
   NavigationItem
 } from '../../const';
 
-const HeaderNavigation = (props) => {
+const Navigation = (props) => {
   const {navigationType} = props;
 
   const navigationClass = classnames(
@@ -36,4 +37,8 @@ const HeaderNavigation = (props) => {
   )
 }
 
-export default HeaderNavigation;
+Navigation.propTypes = {
+  navigationType: PropTypes.string.isRequired
+}
+
+export default Navigation;
