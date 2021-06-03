@@ -6,8 +6,14 @@
   justify-content: space-between;
 }
 
-.navigation__element:not(:last-child) {
-  margin-right: 56px;
+.navigation__element {
+  &--header:not(:last-child) {
+    margin-right: 69px;
+  }
+
+  &--footer:not(:last-child) {
+    margin-right: 66px;
+  }
 }
 
 .navigation__link {

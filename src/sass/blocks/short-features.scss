@@ -3,7 +3,7 @@
 
   display: flex;
 
-  margin-bottom: 37px;
+  margin-bottom: 48px;
 }
 
 .short-features__item {
@@ -16,14 +16,14 @@
   &::before {
     content: "";
     position: absolute;
-    top: -28px;
+    top: -30px;
 
     opacity: 0.5;
   }
 
   &--fuel {
     &::before {
-      left: 20px;
+      left: 21px;
 
       width: 23px;
       height: 22px;
@@ -34,7 +34,7 @@
 
   &--transmission {
     &::before {
-      left: 23px;
+      left: 25px;
 
       width: 26px;
       height: 24px;
@@ -45,7 +45,7 @@
 
   &--power {
     &::before {
-      left: 12px;
+      left: 5px;
 
       width: 33px;
       height: 21px;
@@ -56,7 +56,7 @@
 
   &--size {
     &::before {
-      left: 3px;
+      left: 6px;
       
       width: 31px;
       height: 24px;

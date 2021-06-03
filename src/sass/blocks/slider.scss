@@ -1,14 +1,15 @@
 .slider {
   position: relative;
+  padding-top: 5px;
 
   display: grid;
   grid-template-rows: max-content max-content;
-  row-gap: 39px;
+  row-gap: 34px;
 
   &::before {
     content: "NEW MODEL";
     position: absolute;
-    top: 0;
+    top: 5px;
     left: 0;
 
     padding-top: 4px;
@@ -47,7 +48,7 @@
   border-radius: 50%;
 
   background-repeat: no-repeat;
-  background-position: 15px 18px;
+  background-position: 15px 16px;
 
   &--next-active {
     background-image: url("../../img/icon-arrow-right-active.svg");

@@ -24,6 +24,7 @@ const Navigation = (props) => {
         key={item.ID}
         name={item.NAME}
         url={item.URL}
+        navigationType={navigationType}
         />
     })
   };
