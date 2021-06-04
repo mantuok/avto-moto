@@ -24,4 +24,8 @@
   &:hover {
     color: var(--contrast);
   }
+
+  &:active {
+    opacity: 0.7;
+  }
 }

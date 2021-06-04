@@ -28,6 +28,10 @@
     border-color: var(--contrast)
   }
 
+  &:active {
+    opacity: 0.7;
+  }
+
   &--active {
     color: var(--basic);
     background-color: var(--contrast);

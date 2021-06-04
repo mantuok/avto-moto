@@ -48,21 +48,33 @@
   border-radius: 50%;
 
   background-repeat: no-repeat;
-  background-position: 15px 16px;
+  background-position: 15px 17px;
 
   &--next-active {
     background-image: url("../../img/icon-arrow-right-active.svg");
 
+    cursor: pointer;
+
     &:hover {
       border-color: var(--contrast);
+    }
+
+    &:active {
+      opacity: 0.7;
     }
   }
 
   &--previous-active {
     background-image: url("../../img/icon-arrow-left-active.svg");
 
+    cursor: pointer;
+
     &:hover {
       border-color: var(--contrast);
+    }
+
+    &:active {
+      opacity: 0.7;
     }
   }
 

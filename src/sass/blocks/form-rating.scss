@@ -13,6 +13,10 @@
   font-weight: 600;
 }
 
+.form-rating__star {
+  cursor: pointer;
+}
+
 .form-rating__star:not(:last-child) {
   margin-right: 8px;
 }

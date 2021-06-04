@@ -22,6 +22,7 @@ const Star = (props) => {
       width="27" 
       height="27" 
       alt="Звезда" 
+      tabIndex="0"
       onMouseEnter={() => onMouseEnter(starIndex)}
       onMouseLeave={onMouseLeave}
       onClick = {() => onSelectRating(starIndex)}

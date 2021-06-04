@@ -30,10 +30,16 @@
 
   border: 1px solid var(--contrast);
 
+  cursor: pointer;
+
   &:hover {
     color: var(--basic);
 
     background-color: var(--contrast);
+  }
+
+  &:active {
+    opacity: 0.7;
   }
 }
 
@@ -52,8 +58,14 @@
 
   border: 1px solid var(--contrast);
 
+  cursor: pointer;
+
   &:hover {
     background-color: var(--dark-contrast);
+  }
+
+  &:active {
+    opacity: 0.7;
   }
 }
 
