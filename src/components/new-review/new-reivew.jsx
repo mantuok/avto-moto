@@ -169,6 +169,7 @@ const NewReview = (props) => {
               placeholder="Имя" 
               value={formData.author}
               onInput={handleInputChange}
+              autoFocus
             />
             {renderErrorMessage(RequiredField.AUTHOR)}
           </div>
