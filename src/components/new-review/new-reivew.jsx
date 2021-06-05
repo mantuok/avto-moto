@@ -26,6 +26,7 @@ const NewReview = (props) => {
   });
 
   const popupContentRef = useRef(null);
+  const ratingContainerRef = useRef(null);
 
   useEffect(() => {
     document.addEventListener(`keydown`, escButtonClickHandler);
@@ -142,7 +143,11 @@ const NewReview = (props) => {
   };
 
   const outsidePopupClickHandler = (evt) => {
-    if (popupContentRef.current && !popupContentRef.current.contains(evt.target)) {
+    if (
+      popupContentRef.current && 
+      !popupContentRef.current.contains(evt.target) &&
+      !Object.values(evt.path).includes(ratingContainerRef.current)
+    ) {
       onClosePopup();
     }
   }
@@ -175,7 +180,7 @@ const NewReview = (props) => {
           </div>
           <div className="form__rating form-rating">
             <span className="form-rating__text">Оцените товар:</span>
-            <div className="form-rating__stars">
+            <div className="form-rating__stars" ref={ratingContainerRef}>
               {renderRatingStars()}
             </div>
           </div>
