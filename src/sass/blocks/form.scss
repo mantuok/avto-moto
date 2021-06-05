@@ -24,6 +24,10 @@
 
   border: 1px solid var(--extra-light-decorative);
 
+  &:hover {
+    border: 1px solid var(--contrast);
+  }
+
   &--author {
     position: relative;
 
@@ -56,6 +60,8 @@
 
   &--comment {
     height: 118px;
+
+    resize: none;
   }
 
   &--error {

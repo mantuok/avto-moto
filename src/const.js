@@ -121,7 +121,7 @@ export const FeatureItem = {
 export const ButtonType = {
   PREVIOUS: `PREVIOUS`,
   NEXT: `NEXT`
-}
+};
 
 export const RecommendRating = 3;
 
@@ -129,7 +129,7 @@ export const TabButtonType = {
   DETAILED_FEATURES: `detailed-features`,
   REVIEWS: `reviews`,
   CONTACTS: `contacts`
-}
+};
 
 export const STAR_NUMBER = 5;
 
@@ -144,14 +144,18 @@ export const StarType = {
     NAME: `inactive`,
     SRC: `../img/icon-star-inactive.svg`
   }
-}
+};
 
 export const ErrorType = {
   EMPTY_FIELD: `Пожалуйста, заполните поле`
-}
+};
 
 export const RequiredField = {
   COMMENT: `comment`,
   AUTHOR: `author`
   
+};
+
+export const Key = {
+  ESC: 27
 }

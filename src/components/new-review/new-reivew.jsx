@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import {nanoid} from 'nanoid';
@@ -8,7 +8,8 @@ import ErrorMessage from '../error-message/error-message';
 import Star from '../star/star';
 import {
   RequiredField,
-  STAR_ARRAY
+  STAR_ARRAY,
+  Key
 } from '../../const';
 
 const NewReview = (props) => {
@@ -22,6 +23,19 @@ const NewReview = (props) => {
     rating: 0,
     ratingOnHover: 0,
     isFormInvalid: false
+  });
+
+  const popupContentRef = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener(`keydown`, escButtonClickHandler);
+    document.addEventListener(`click`, outsidePopupClickHandler);
+    return (
+      () => {
+        document.removeEventListener(`keydown`, escButtonClickHandler);
+        document.removeEventListener(`click`, outsidePopupClickHandler);
+      }
+    )
   });
 
   const isFormValid = formData.author !== `` && formData.comment !==``
@@ -120,10 +134,25 @@ const NewReview = (props) => {
   const handleCloseButtonClick = () => {
     onClosePopup();
   };
+
+  const escButtonClickHandler = (evt) => {
+    if (evt.keyCode === Key.ESC) {
+      onClosePopup()
+    }
+  };
+
+  const outsidePopupClickHandler = (evt) => {
+    if (popupContentRef.current && !popupContentRef.current.contains(evt.target)) {
+      onClosePopup();
+    }
+  }
   
   return (
     <section className="main__new-review new-review">
-      <div className="new-review__popup">
+      <div 
+        className="new-review__popup" 
+        ref={popupContentRef}
+      >
         <h1 className="new-review__heading">Оставить отзыв</h1>
         <form 
           className="new-review__form form"
@@ -209,6 +238,7 @@ NewReview.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   onClosePopup() {
     dispatch(ActionCreator.closePopup())
+    document.body.style.overflow = 'scroll'
   },
   onSubmitReview(newReviewData) {
     dispatch(ActionCreator.saveReview(newReviewData))

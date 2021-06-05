@@ -22,7 +22,7 @@ const ReviewsTab = (props) => {
 
   const handleAddReviewClick = () => {
     onOpenPopup();
-  }
+  };
 
   return (
     <section className="detailed-info__reivews reviews">
@@ -49,6 +49,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onOpenPopup() {
     dispatch(ActionCreator.openPopup())
+    document.body.style.overflow = 'hidden';
   }
 });
 
