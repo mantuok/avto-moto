@@ -1,13 +1,13 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {ActionCreator} from '../../store/action';
-import {PropTypes} from 'prop-types';
-import {reviewsPropTypes} from '../../utils/props-validation';
 import Review from '../reivew/review';
 import NewReview from '../new-review/new-reivew';
 
-const ReviewsTab = (props) => {
-  const {reviews, popupToBeOpen, onOpenPopup} = props;
+const ReviewsTab = () => {
+  const reviews = useSelector((state) => state.reviews);
+  const popupToBeOpen = useSelector((state) => state.popupToBeOpen);
+  const dispatch = useDispatch();
 
   const renderReviews = () => {
     return reviews.map((review) => {
@@ -23,6 +23,11 @@ const ReviewsTab = (props) => {
   const handleAddReviewClick = () => {
     onOpenPopup();
   };
+
+  const onOpenPopup = () => {
+    dispatch(ActionCreator.openPopup())
+    document.body.style.overflow = 'hidden';
+  }
 
   return (
     <section className="detailed-info__reivews reviews">
@@ -41,22 +46,4 @@ const ReviewsTab = (props) => {
   )
 };
 
-const mapStateToProps = (state) => ({
-  reviews: state.reviews,
-  popupToBeOpen: state.popupToBeOpen
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  onOpenPopup() {
-    dispatch(ActionCreator.openPopup())
-    document.body.style.overflow = 'hidden';
-  }
-});
-
-ReviewsTab.propTypes = {
-  reviews: reviewsPropTypes,
-  onOpenPopup: PropTypes.func.isRequired,
-  popupToBeOpen: PropTypes.bool.isRequired
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ReviewsTab);
+export default ReviewsTab;

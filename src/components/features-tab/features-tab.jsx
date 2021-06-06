@@ -1,11 +1,10 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {carsPropTypes} from '../../utils/props-validation';
+import {useSelector} from 'react-redux';
 import Feature from '../feature/feature';
 import {FeatureItem} from '../../const';
 
-const FeaturesTab = (props) => {
-  const {cars} = props;
+const FeaturesTab = () => {
+  const cars = useSelector((state) => state.cars)
   const car = cars[0];
 
   const featuresList = Object.values(FeatureItem);
@@ -30,13 +29,4 @@ const FeaturesTab = (props) => {
   )
 };
 
-FeaturesTab.prototypes = {
-  cars: carsPropTypes
-}
-
-
-const mapStateToProps = (state) => ({
-  cars: state.cars
-})
-
-export default connect(mapStateToProps, null)(FeaturesTab);
+export default FeaturesTab;

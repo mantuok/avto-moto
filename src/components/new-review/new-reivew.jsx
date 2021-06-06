@@ -1,9 +1,8 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import {nanoid} from 'nanoid';
 import classnames from 'classnames';
-import {PropTypes} from 'prop-types';
 import ErrorMessage from '../error-message/error-message';
 import Star from '../star/star';
 import {
@@ -12,8 +11,8 @@ import {
   Key
 } from '../../const';
 
-const NewReview = (props) => {
-  const {onClosePopup, onSubmitReview} = props;
+const NewReview = () => {
+  const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
     author: ``,
@@ -130,7 +129,7 @@ const NewReview = (props) => {
     } else {
       setInvalidStatus();
     }
-  }
+  };
 
   const handleCloseButtonClick = () => {
     onClosePopup();
@@ -150,7 +149,16 @@ const NewReview = (props) => {
     ) {
       onClosePopup();
     }
-  }
+  };
+
+  const onClosePopup = () => {
+    dispatch(ActionCreator.closePopup())
+    document.body.style.overflow = 'scroll'
+  };
+
+  const onSubmitReview = (newReviewData) => {
+    dispatch(ActionCreator.saveReview(newReviewData))
+  };
   
   return (
     <section className="main__new-review new-review">
@@ -236,19 +244,4 @@ const NewReview = (props) => {
   )
 }
 
-NewReview.propTypes = {
-  onClosePopup: PropTypes.func.isRequired,
-  onSubmitReview: PropTypes.func.isRequired 
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  onClosePopup() {
-    dispatch(ActionCreator.closePopup())
-    document.body.style.overflow = 'scroll'
-  },
-  onSubmitReview(newReviewData) {
-    dispatch(ActionCreator.saveReview(newReviewData))
-  }
-});
-
-export default connect(null, mapDispatchToProps)(NewReview);
+export default NewReview

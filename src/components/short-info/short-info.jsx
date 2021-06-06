@@ -1,9 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {carsPropTypes} from '../../utils/props-validation';
+import {useSelector} from 'react-redux';
 
-const ShortInfo = (props) => {
-  const {cars} = props;
+const ShortInfo = () => {
+  const cars = useSelector((state) => state.cars);
   const {name, fuel, transmissionShort, power, size, price, oldPrice} = cars[0];
 
   return (
@@ -25,12 +24,4 @@ const ShortInfo = (props) => {
   )
 };
 
-ShortInfo.propTypes = {
-  cars: carsPropTypes
-};
-
-const mapStateToProps = (state) => ({
-  cars: state.cars
-});
-
-export default connect(mapStateToProps, null)(ShortInfo);
+export default ShortInfo;
