@@ -159,3 +159,5 @@ export const RequiredField = {
 export const Key = {
   ESC: 27
 }
+
+export const MAX_RATING = 5;

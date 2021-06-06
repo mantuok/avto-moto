@@ -1,6 +1,9 @@
 import React from 'react';
 import {reviewPropTypes} from '../../utils/props-validation';
-import {RecommendRating} from '../../const';
+import {
+  RecommendRating,
+  MAX_RATING
+} from '../../const';
 import {getHumanDateFormat} from '../../utils/day';
 import {nanoid} from 'nanoid';
 
@@ -12,7 +15,7 @@ const Review = ({review}) => {
     for (let i = 0; i < rating; i++) {
       starsList.push(<span key={nanoid()} className="rating__star rating__star--active"></span>)
     }
-    for (let i = 0; i < 5 - rating; i++) {
+    for (let i = 0; i < MAX_RATING - rating; i++) {
       starsList.push(<span key={nanoid()} className="rating__star rating__star--inactive"></span>)
     }
     return starsList;
