@@ -1,6 +1,10 @@
 @mixin container {
   width: 1169px;
   margin: auto;
+
+  @media (max-width: 1168px) {
+    width: 100%;
+  }
 }
 
 @mixin reset-list-style {

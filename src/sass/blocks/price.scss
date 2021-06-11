@@ -1,7 +1,10 @@
 .price {
-  vertical-align: middle;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 
   &--new {
+    min-width: max-content;
     margin-right: 30px;
 
     font-size: 35px;

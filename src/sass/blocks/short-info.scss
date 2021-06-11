@@ -5,6 +5,7 @@
 }
 
 .short-info__heading {
+  min-width: max-content;
   margin: 0;
   margin-bottom: 69px;
 
@@ -18,10 +19,12 @@
 
 .short-info__request {
   @include button-contrast;
-
+  
   margin-bottom: 16px;
 }
 
 .short-info__loan {
   @include button;
+
+  min-width: max-content;
 }
