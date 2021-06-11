@@ -7,6 +7,10 @@
   background-color: var(--light-contrast);
 }
 
+.header__logo {
+  margin-right: 69px;
+}
+
 .header__container {
   @include container;
 
