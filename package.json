@@ -20,6 +20,7 @@
     "sass": "1.80.4",
     "web-vitals": "1.1.2"
   },
+  "homepage": "https://mantuok.github.io/avto-moto/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
